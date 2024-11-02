@@ -7,8 +7,9 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+var people int64
+
 func main() {
-	var people int64
 	app := &cli.App{
 		Name: "scrabble",
 		Flags: []cli.Flag{
@@ -21,6 +22,7 @@ func main() {
 				Destination: &people,
 			},
 		},
+		Action: game,
 	}
 
 	if err := app.Run(os.Args); err != nil {
